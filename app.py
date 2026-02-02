@@ -759,20 +759,20 @@ def index():
 <div id="letter-screen" class="hidden">
   <div class="letter-container">
     <div class="letter-date">February 2, 2026</div>
-    <div class="letter-greeting">My Dearest,</div>
+    <div class="letter-greeting">My Love,</div>
     <div class="letter-body">
       <p>
-        As I sit here trying to find the perfect words, I realize that no amount of poetry 
-        or prose could truly capture what I want to say. But let me try anyway...
+        I know myself that I dont have any way with words and I realize that no amount of poetry  or what I type here 
+        could truly capture what I want to say. But let me try anyway...
       </p>
       <p>
-        You've made every single day brighter just by being in it. Your smile, your laugh, 
-        the way you see the world – everything about you makes me want to be better. 
+        Every single day that I spend with you love, uproots any doubts, fears, and every problem I could ever think of. 
+        Everything about you love makes me feel so alive, so complete, and makes me want to be better.  
         And now, as Valentine's Day approaches, I can't think of anything I want more than 
         to spend it with <span class="letter-highlight">you</span>.
       </p>
       <p>
-        So here's my question, and my hope: <span class="letter-highlight">Will you be my Valentine?</span>
+        So here it is love, my question and my desire: <span class="letter-highlight">Will you be my Valentine?</span>
       </p>
     </div>
     
@@ -780,19 +780,18 @@ def index():
       <p><strong>When:</strong> February 7, 2026 at 6:00 PM</p>
       <p><strong>Where:</strong> Jiangnan Hotpot & Grill</p>
       <p style="font-size: 1rem; margin-top: 15px; font-style: italic;">(Or anywhere else your heart desires, my queen ♡)</p>
-      <p style="margin-top: 20px;"><strong>Dress:</strong> Comfortable & Beautiful (just like you always are)</p>
+      <p style="margin-top: 20px;"><strong>Attire:</strong> Dress Comfortably or matching outfits (please)</p>
     </div>
     
     <div class="letter-body">
       <p>
-        I can't wait to see you there, to share a meal, some laughs, and make memories 
-        that we'll look back on and smile about for years to come.
+        I can't wait to see and be with you there, to share a meal and yet make another set of memories.
       </p>
     </div>
     
     <div class="letter-signature">
       Forever yours,<br>
-      <span style="margin-top: 10px; display: inline-block;">Your Valentine</span>
+      <span style="margin-top: 10px; display: inline-block;">Your Love and Valentine Vine</span>
     </div>
     
     <div class="letter-hearts">💕 ✨ 💖 ✨ 💕</div>

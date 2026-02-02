@@ -719,6 +719,8 @@ def index():
         background: white !important;
         background-image: none !important;
         color: black !important;
+        margin: 0 !important;
+        padding: 0 !important;
       }
 
       body * {
@@ -747,7 +749,7 @@ def index():
         box-shadow: none !important;
         border: 1px solid #eee !important;
         background: white !important;
-        padding: 5cm 4cm 5cm 4cm !important;
+        padding: 2cm 3cm 3cm 3cm !important;           /* ← reduced top padding a lot */
         width: 21cm !important;
         max-width: 21cm !important;
         margin: 0 auto !important;
@@ -768,14 +770,14 @@ def index():
       }
 
       .letter-greeting {
-        font-size: 20pt !important;
+        font-size: 19pt !important;
         color: #c1121f !important;
-        margin-bottom: 1.5cm !important;
+        margin-bottom: 1cm !important;
       }
 
       .letter-body {
-        font-size: 13pt !important;
-        line-height: 1.8 !important;
+        font-size: 12.5pt !important;
+        line-height: 1.7 !important;
         color: #222 !important;
       }
 
@@ -788,26 +790,26 @@ def index():
       .letter-details {
         border-left: 5px solid #c1121f !important;
         background: #fff5f5 !important;
-        padding: 1.4cm !important;
-        margin: 2cm 0 !important;
+        padding: 1cm !important;
+        margin: 1.4cm 0 !important;
       }
 
       .letter-details p {
-        font-size: 12.5pt !important;
-        margin: 0.7em 0 !important;
+        font-size: 12pt !important;
+        margin: 0.5em 0 !important;
       }
 
       .letter-signature {
-        font-size: 18pt !important;
+        font-size: 17pt !important;
         color: #c1121f !important;
-        margin-top: 3cm !important;
+        margin-top: 2cm !important;
         text-align: right !important;
       }
 
       .letter-hearts {
         text-align: center !important;
-        font-size: 2rem !important;
-        margin-top: 2.5cm !important;
+        font-size: 1.8rem !important;
+        margin-top: 1.8cm !important;
         color: #e63946 !important;
       }
 
@@ -820,7 +822,7 @@ def index():
 
       @page {
         size: A4 portrait;
-        margin: 1.5cm 1cm 2cm 1cm;
+        margin: 6mm 8mm 12mm 8mm;           /* ← very small top margin */
       }
     }
   </style>

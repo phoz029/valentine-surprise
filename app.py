@@ -95,7 +95,6 @@ def index():
       font-family: 'Playfair Display', serif;
       font-weight: 700;
       margin-bottom: 0;
-      animation: none;
     }
 
     .card {
@@ -529,17 +528,18 @@ def index():
     }
 
     .evil {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  transform: translate(0, 0);
-  width: 220px;
-  border-radius: 20px;
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
-  z-index: 1;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  pointer-events: none;
-}
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      transform: translate(0, 0);
+      width: 220px;
+      border-radius: 20px;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+      z-index: 1;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      pointer-events: none;
+    }
+
     #letter-screen {
       position: fixed;
       inset: 0;
@@ -663,7 +663,27 @@ def index():
     .hidden { 
       display: none !important; 
     }
-    
+
+    #print-letter-btn {
+      display: block;
+      margin: 50px auto 30px;
+      padding: 16px 50px;
+      font-size: 1.2rem;
+      font-family: 'Playfair Display', serif;
+      background: linear-gradient(135deg, #e63946, #d00000);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(214, 48, 49, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    #print-letter-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(214, 48, 49, 0.6);
+    }
+
     @media (max-width: 768px) {
       h1 { font-size: 2.5rem; letter-spacing: -0.5px; }
       .subtitle { font-size: 1.2rem; }
@@ -685,13 +705,123 @@ def index():
         min-width: 140px; 
         padding: 16px 30px; 
         font-size: 1.1rem;
-        gap: 15px;
       }
       .buttons { gap: 15px; }
       .question-content { padding: 40px 25px; }
       .card { padding: 40px 30px; }
       .letter-container { padding: 40px 25px; }
       .evil { width: 140px; }
+    }
+
+    /* ────── PRINT STYLES ────── */
+    @media print {
+      body {
+        background: white !important;
+        background-image: none !important;
+        color: black !important;
+      }
+
+      body * {
+        visibility: hidden;
+      }
+
+      #letter-screen,
+      #letter-screen * {
+        visibility: visible;
+      }
+
+      #letter-screen {
+        position: static !important;
+        display: block !important;
+        background: white !important;
+        inset: 0 !important;
+        z-index: auto !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        overflow-y: visible !important;
+        animation: none !important;
+        transition: none !important;
+      }
+
+      .letter-container {
+        box-shadow: none !important;
+        border: 1px solid #eee !important;
+        background: white !important;
+        padding: 5cm 4cm 5cm 4cm !important;
+        width: 21cm !important;
+        max-width: 21cm !important;
+        margin: 0 auto !important;
+        border-radius: 0 !important;
+        position: relative !important;
+        transform: none !important;
+        animation: none !important;
+        page-break-inside: avoid;
+      }
+
+      .letter-container::before {
+        display: none !important;
+      }
+
+      .letter-date {
+        font-size: 11pt !important;
+        color: #555 !important;
+      }
+
+      .letter-greeting {
+        font-size: 20pt !important;
+        color: #c1121f !important;
+        margin-bottom: 1.5cm !important;
+      }
+
+      .letter-body {
+        font-size: 13pt !important;
+        line-height: 1.8 !important;
+        color: #222 !important;
+      }
+
+      .letter-highlight {
+        color: #b22222 !important;
+        font-weight: bold !important;
+        background: none !important;
+      }
+
+      .letter-details {
+        border-left: 5px solid #c1121f !important;
+        background: #fff5f5 !important;
+        padding: 1.4cm !important;
+        margin: 2cm 0 !important;
+      }
+
+      .letter-details p {
+        font-size: 12.5pt !important;
+        margin: 0.7em 0 !important;
+      }
+
+      .letter-signature {
+        font-size: 18pt !important;
+        color: #c1121f !important;
+        margin-top: 3cm !important;
+        text-align: right !important;
+      }
+
+      .letter-hearts {
+        text-align: center !important;
+        font-size: 2rem !important;
+        margin-top: 2.5cm !important;
+        color: #e63946 !important;
+      }
+
+      #print-letter-btn,
+      video, audio, #sad-cat-overlay, #popup, #envelope-container,
+      #question-container, .card, #loader, #welcome-screen, .evil,
+      #letterBGM {
+        display: none !important;
+      }
+
+      @page {
+        size: A4 portrait;
+        margin: 1.5cm 1cm 2cm 1cm;
+      }
     }
   </style>
 </head>
@@ -759,42 +889,44 @@ def index():
 <div id="letter-screen" class="hidden">
   <div class="letter-container">
     <div class="letter-date">February 2, 2026</div>
-    <div class="letter-greeting">My Love,</div>
+    <div class="letter-greeting">My Dearest Love,</div>
+    
     <div class="letter-body">
       <p>
-        I know myself that I dont have any way with words and I realize that no amount of poetry  or what I type here 
-        could truly capture what I want to say. But let me try anyway...
+        I know myself that I don't have a way with words, and I realize that no amount of poetry or anything I could possibly type here could truly capture what I want to say. But let me try anyway...
       </p>
       <p>
-        Every single day that I spend with you love, uproots any doubts, fears, and every problem I could ever think of. 
-        Everything about you love makes me feel so alive, so complete, and makes me want to be better.  
-        And now, as Valentine's Day approaches, I can't think of anything I want more than 
-        to spend it with <span class="letter-highlight">you</span>.
+        Every single day that I spend with you, love, uproots any doubts, fears, and every problem I could ever think of. Everything about you makes me feel so alive, so complete, and inspires me to be better.  
+        And now, as Valentine's Day approaches, I can't think of anything I want more than to spend it with <span class="letter-highlight">you</span>.
       </p>
       <p>
-        So here it is love, my question and my desire: <span class="letter-highlight">Will you be my Valentine?</span>
+        So here it is, love — my question and my deepest desire: <span class="letter-highlight">Will you be my Valentine?</span>
       </p>
     </div>
     
     <div class="letter-details">
       <p><strong>When:</strong> February 7, 2026 at 6:00 PM</p>
       <p><strong>Where:</strong> Jiangnan Hotpot & Grill</p>
-      <p style="font-size: 1rem; margin-top: 15px; font-style: italic;">(Or anywhere else your heart desires, my queen ♡)</p>
-      <p style="margin-top: 20px;"><strong>Attire:</strong> Dress Comfortably or matching outfits (please)</p>
+      <p style="font-size: 1rem; margin-top: 12px; font-style: italic;">(Or anywhere else your heart desires, my queen ♡)</p>
+      <p style="margin-top: 20px;"><strong>Attire:</strong> Dress comfortably — or matching outfits if you're feeling extra cute (please? 🥺)</p>
     </div>
     
     <div class="letter-body">
       <p>
-        I can't wait to see and be with you there, to share a meal and yet make another set of memories.
+        I can't wait to see you there, to share a warm meal, steal glances, make you laugh, and create another beautiful memory together.
       </p>
     </div>
     
     <div class="letter-signature">
       Forever yours,<br>
-      <span style="margin-top: 10px; display: inline-block;">Your Love and Valentine Vine</span>
+      <span style="margin-top: 12px; display: inline-block;">Your Love,<br>Jervine ♡</span>
     </div>
     
-    <div class="letter-hearts">💕 ✨ 💖 ✨ 💕</div>
+    <div class="letter-hearts">💕 &nbsp; ✨ &nbsp; 💖 &nbsp; ✨ &nbsp; 💕</div>
+
+    <button id="print-letter-btn" onclick="window.print()">
+      🖨️ Print this letter for keeps
+    </button>
   </div>
 </div>
 
@@ -840,7 +972,6 @@ loginForm.addEventListener("submit", async (e) => {
   const username = usernameInput.value;
   const password = passwordInput.value;
   
-  // Validate credentials
   if (username !== "admin" || password !== "admin242529") {
     error.textContent = "Incorrect username or password";
     passwordInput.value = "";
@@ -860,7 +991,6 @@ loginForm.addEventListener("submit", async (e) => {
     welcomeScreen.classList.remove("hidden");
     welcomeScreen.style.display = "flex";
     
-    // Transition to pink mode and envelope after showing name
     setTimeout(() => {
       document.body.classList.add("pink-mode");
       welcomeScreen.style.opacity = "0";
@@ -902,7 +1032,6 @@ const sadCatOverlay = document.getElementById("sad-cat-overlay");
 const evilVideo = document.getElementById("evilVideo");
 
 noBtn.onclick = (e) => {
-  // First two clicks show popups
   if (noCount === 0) {
     noCount++;
     popupVideo.src = "/static/assets/hamster.mp4";
@@ -918,7 +1047,6 @@ noBtn.onclick = (e) => {
       sadCatOverlay.classList.remove("show");
     }, 3000);
   } else {
-    // From 3rd click onwards: move to predefined positions
     const posIndex = (noCount - 2) % predefinedPositions.length;
     const pos = predefinedPositions[posIndex];
     
@@ -928,7 +1056,6 @@ noBtn.onclick = (e) => {
     noBtn.style.transform = "translate(-50%, -50%)";
     noBtn.style.transition = "left 0.4s cubic-bezier(0.4, 0, 0.2, 1), top 0.4s cubic-bezier(0.4, 0, 0.2, 1)";
     
-    // Show evil video on first repel
     if (noCount === 2) {
       evilVideo.src = "/static/assets/muhehehe.mp4";
       evilVideo.classList.remove("hidden");
@@ -947,7 +1074,6 @@ document.getElementById("yesBtn").onclick = () => {
   const questionContainer = document.getElementById("question-container");
   const letterScreen = document.getElementById("letter-screen");
   
-  // Hide evil video if it's showing
   evilVideo.classList.add("hidden");
   evilVideo.pause();
   
@@ -958,10 +1084,8 @@ document.getElementById("yesBtn").onclick = () => {
     letterScreen.classList.remove("hidden");
     letterScreen.style.display = "flex";
     
-    // Play background music
     letterBGM.play().catch(e => {
       console.log("BGM autoplay blocked:", e);
-      // Add a subtle click-to-play hint if autoplay is blocked
       const playHint = document.createElement('div');
       playHint.style.cssText = 'position: fixed; top: 20px; right: 20px; background: rgba(214, 48, 49, 0.9); color: white; padding: 12px 20px; border-radius: 25px; font-size: 0.9rem; cursor: pointer; z-index: 200; box-shadow: 0 4px 15px rgba(0,0,0,0.2);';
       playHint.textContent = '🔊 Tap to play music';
